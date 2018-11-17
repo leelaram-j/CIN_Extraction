@@ -1,0 +1,2 @@
+Split id	Input_Company_name	CIN	MCA_Company_Name	Company_Address	MCA_Status
+SP1	GOOGLE	U72900KA2003PTC033028	GOOGLE INDIA PRIVATE LIMITED	No 3, RMZ Infinity - Tower E, Old Madras Road, 4th & 5th Floors, Bangalore Bangalore KA 560016 IN	Active
