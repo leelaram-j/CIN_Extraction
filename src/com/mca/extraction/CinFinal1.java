@@ -16,8 +16,8 @@ public class CinFinal1
 {
 	public static void main(String[] args) throws IOException
 	{
-		String inFilename = "D:\\CIN_Extraction\\src\\com\\testdata\\misc_mca.txt";
-		String opFileName = "C:\\Users\\leelaram.j\\Downloads\\MCA_misc1.txt";
+		String inFilename = "C:\\Users\\leelaram.j\\Downloads\\kotak_cat_d.txt";
+		String opFileName = "C:\\Users\\leelaram.j\\Downloads\\kotak_cat_d_op.txt";
 		System.setProperty("webdriver.chrome.driver", "D:\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
 	    driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
@@ -32,15 +32,16 @@ public class CinFinal1
 	    		String inName =arrOfStr[1];
 	    		String gsearch = inName+" zaubacorp";
 	    		driver.get("https://www.google.com");
-	    		String titleCheck = driver.getTitle();
-	    		Boolean b = titleCheck.equals("Google");
-	    		if (!b)
-	    		{
-	    			Thread.sleep(900000);
-	    			driver.get("https://www.google.com");
-				}
 	    		driver.findElement(By.xpath("//input[@name='q']")).sendKeys(gsearch);
 	            driver.findElement(By.xpath("//input[@name='q']")).sendKeys(Keys.ENTER);
+	            int a = driver.findElements(By.xpath("//div[@class='srg']/div[1]/div/div/div[1]/a")).size();
+	            if(a==0)
+	            {
+	            	Thread.sleep(900000);
+	            	driver.get("https://www.google.com");
+		    		driver.findElement(By.xpath("//input[@name='q']")).sendKeys(gsearch);
+		            driver.findElement(By.xpath("//input[@name='q']")).sendKeys(Keys.ENTER);
+	            }
 	            driver.findElement(By.xpath("//div[@class='srg']/div[1]/div/div/div[1]/a")).click();
 	            int counter = driver.findElements(By.xpath("//table[@class='table table-striped']/thead/tr/td[2]")).size();
 	            if (counter==0)
