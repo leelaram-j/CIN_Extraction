@@ -16,8 +16,8 @@ public class CinFinal1
 {
 	public static void main(String[] args) throws IOException
 	{
-		String inFilename = "C:\\Users\\leelaram.j\\Downloads\\kotak_cat_d.txt";
-		String opFileName = "C:\\Users\\leelaram.j\\Downloads\\kotak_cat_d_op.txt";
+		String inFilename = "C:\\Users\\leelaram.j\\Downloads\\mcaScrapIP1.txt";
+		String opFileName = "C:\\Users\\leelaram.j\\Downloads\\mcaScrapOP3.txt";
 		System.setProperty("webdriver.chrome.driver", "D:\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
 	    driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
@@ -37,14 +37,15 @@ public class CinFinal1
 	            int a = driver.findElements(By.xpath("//div[@class='srg']/div[1]/div/div/div[1]/a")).size();
 	            if(a==0)
 	            {
-	            	Thread.sleep(900000);
-	            	driver.get("https://www.google.com");
-		    		driver.findElement(By.xpath("//input[@name='q']")).sendKeys(gsearch);
-		            driver.findElement(By.xpath("//input[@name='q']")).sendKeys(Keys.ENTER);
+	            	continue;
 	            }
 	            driver.findElement(By.xpath("//div[@class='srg']/div[1]/div/div/div[1]/a")).click();
-	            int counter = driver.findElements(By.xpath("//table[@class='table table-striped']/thead/tr/td[2]")).size();
-	            if (counter==0)
+	            int counter1 = driver.findElements(By.xpath("//table[@class='table table-striped']/thead/tr/td[2]")).size();
+	            int counter2 = driver.findElements(By.xpath("//table[@class='table table-striped']/tbody/tr[1]/td[2]")).size();
+	            int counter3 = driver.findElements(By.xpath("//table[@class='table table-striped']/tbody/tr[2]/td[2]")).size();
+	            int counter4 = driver.findElements(By.xpath("//div[@class='col-lg-6 col-md-6 col-sm-12 col-xs-12']/p[4]")).size();
+	            int counter = counter1+counter2+counter3+counter4;
+	            if (counter<4)
 	            {
 	            	continue;
 	            }
@@ -53,6 +54,7 @@ public class CinFinal1
 	            String status = driver.findElement(By.xpath("//table[@class='table table-striped']/tbody/tr[2]/td[2]")).getText();
 	            String address = driver.findElement(By.xpath("//div[@class='col-lg-6 col-md-6 col-sm-12 col-xs-12']/p[4]")).getText();
 	            writeData.write2Txt(opFileName,splitId,inName,mcaName,CIN,address,status);
+	            Thread.sleep(3000);
 	        }
 	    }
 	    catch (ElementNotFoundException e)
