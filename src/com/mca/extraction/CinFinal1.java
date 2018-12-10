@@ -16,7 +16,7 @@ public class CinFinal1
 	public static void main(String[] args) throws IOException
 	{
 		String inFilename = "C:\\Users\\leelaram.j\\Downloads\\mcaScrapIP1.txt";
-		String opFileName = "C:\\Users\\leelaram.j\\Downloads\\mcaScrapOP5.txt";
+		String opFileName = "C:\\Users\\leelaram.j\\Downloads\\mcaScrapOP6.txt";
 		System.setProperty("webdriver.chrome.driver", "D:\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
 	    driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
