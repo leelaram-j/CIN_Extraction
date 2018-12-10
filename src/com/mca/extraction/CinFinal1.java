@@ -9,7 +9,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.io.IOException;
-import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 
 public class CinFinal1
@@ -17,7 +16,7 @@ public class CinFinal1
 	public static void main(String[] args) throws IOException
 	{
 		String inFilename = "C:\\Users\\leelaram.j\\Downloads\\mcaScrapIP1.txt";
-		String opFileName = "C:\\Users\\leelaram.j\\Downloads\\mcaScrapOP3.txt";
+		String opFileName = "C:\\Users\\leelaram.j\\Downloads\\mcaScrapOP5.txt";
 		System.setProperty("webdriver.chrome.driver", "D:\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
 	    driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
@@ -54,25 +53,16 @@ public class CinFinal1
 	            String status = driver.findElement(By.xpath("//table[@class='table table-striped']/tbody/tr[2]/td[2]")).getText();
 	            String address = driver.findElement(By.xpath("//div[@class='col-lg-6 col-md-6 col-sm-12 col-xs-12']/p[4]")).getText();
 	            writeData.write2Txt(opFileName,splitId,inName,mcaName,CIN,address,status);
-	            Thread.sleep(3000);
-	        }
+	         }
 	    }
 	    catch (ElementNotFoundException e)
         {
         	e.printStackTrace();
         }
-	    catch (NoSuchElementException ignored)
-	    {
-	        //return false;
-	    }
-        catch (IOException e)
+	    catch (IOException e)
         {
         	e.printStackTrace();
         }
-    	catch (InterruptedException e)
-    	{
-			e.printStackTrace();
-		}
     	catch (Exception e)
     	{
     		e.printStackTrace();
