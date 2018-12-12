@@ -7,6 +7,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -16,10 +18,12 @@ public class CinFinal1
 	public static void main(String[] args) throws IOException
 	{
 		String inFilename = "C:\\Users\\leelaram.j\\Downloads\\mcaScrapIP1.txt";
-		String opFileName = "C:\\Users\\leelaram.j\\Downloads\\mcaScrapOP6.txt";
+		String opFileName = "C:\\Users\\leelaram.j\\Downloads\\mcaScrapOP11.txt";
 		System.setProperty("webdriver.chrome.driver", "D:\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
-	    driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
+		WebDriverWait wait = new WebDriverWait(driver,10);
+		//Increase the value of 5 in the next line to 10 if script is failing frequently
+	    driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
 	    writeData.write2Txt(opFileName,"Split_ID","Input_Name","MCA_Name","CIN","Address","Status");
 	    try
 	    {
@@ -33,6 +37,16 @@ public class CinFinal1
 	    		driver.get("https://www.google.com");
 	    		driver.findElement(By.xpath("//input[@name='q']")).sendKeys(gsearch);
 	            driver.findElement(By.xpath("//input[@name='q']")).sendKeys(Keys.ENTER);
+	            int capchtaCheck = driver.findElements(By.id("captcha-form")).size();
+	            if(capchtaCheck==1)
+	            {
+	            	Thread.sleep(90000);
+	            	driver.get("https://www.google.com");
+		    		driver.findElement(By.xpath("//input[@name='q']")).sendKeys(gsearch);
+		            driver.findElement(By.xpath("//input[@name='q']")).sendKeys(Keys.ENTER);
+	            	
+	            }
+	            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='srg']/div[1]/div/div/div[1]/a")));
 	            int a = driver.findElements(By.xpath("//div[@class='srg']/div[1]/div/div/div[1]/a")).size();
 	            if(a==0)
 	            {
