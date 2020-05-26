@@ -46,13 +46,13 @@ public class CinFinal1
 		            driver.findElement(By.xpath("//input[@name='q']")).sendKeys(Keys.ENTER);
 	            	
 	            }
-	            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='srg']/div[1]/div/div/div[1]/a")));
-	            int a = driver.findElements(By.xpath("//div[@class='srg']/div[1]/div/div/div[1]/a")).size();
+	            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@id=''search'/div/div/div[1]/div[1]/a")));
+	            int a = driver.findElements(By.xpath("//div[@id=''search'/div/div/div[1]/div[1]/a")).size();
 	            if(a==0)
 	            {
 	            	continue;
 	            }
-	            driver.findElement(By.xpath("//div[@class='srg']/div[1]/div/div/div[1]/a")).click();
+	            driver.findElement(By.xpath("//div[@id=''search'/div/div/div[1]/div[1]/a")).click();
 	            int counter1 = driver.findElements(By.xpath("//table[@class='table table-striped']/thead/tr/td[2]")).size();
 	            int counter2 = driver.findElements(By.xpath("//table[@class='table table-striped']/tbody/tr[1]/td[2]")).size();
 	            int counter3 = driver.findElements(By.xpath("//table[@class='table table-striped']/tbody/tr[2]/td[2]")).size();
