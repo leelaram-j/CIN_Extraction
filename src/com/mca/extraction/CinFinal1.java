@@ -46,13 +46,22 @@ public class CinFinal1
 		            driver.findElement(By.xpath("//input[@name='q']")).sendKeys(Keys.ENTER);
 	            	
 	            }
-	            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@id=''search'/div/div/div[1]/div[1]/a")));
+	            //Suppose if the result page is taking time to load increase the from 5000 to 10000 in next line.
+	            Thread.sleep(5000);
+	            int b = driver.findElements(By.xpath("//div[@id='rso']/div[1]/div[1]/div/div[1]/div/div[2]/div/div[1]/a")).size();
 	            int a = driver.findElements(By.xpath("//div[@id=''search'/div/div/div[1]/div[1]/a")).size();
-	            if(a==0)
+
+	            if(a>0)
 	            {
-	            	continue;
+					driver.findElement(By.xpath("//div[@id=''search'/div/div/div[1]/div[1]/a")).click();
 	            }
-	            driver.findElement(By.xpath("//div[@id=''search'/div/div/div[1]/div[1]/a")).click();
+	            else if(b>0) {
+					driver.findElement(By.xpath("//div[@id='rso']/div[1]/div[1]/div/div[1]/div/div[2]/div/div[1]/a")).click();
+				}
+	            else {
+	            	continue;
+				}
+
 	            int counter1 = driver.findElements(By.xpath("//table[@class='table table-striped']/thead/tr/td[2]")).size();
 	            int counter2 = driver.findElements(By.xpath("//table[@class='table table-striped']/tbody/tr[1]/td[2]")).size();
 	            int counter3 = driver.findElements(By.xpath("//table[@class='table table-striped']/tbody/tr[2]/td[2]")).size();
